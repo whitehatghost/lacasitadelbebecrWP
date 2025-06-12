@@ -12,7 +12,9 @@ Text Domain: lacasitadelbebe
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #dff6fd;
+  background-image: url('assets/background.jpg');
+  background-size: repeat;
+  background-color: #fff;
   color: #333;
   line-height: 1.6;
   margin: 0;
@@ -26,6 +28,7 @@ body {
   --rosa: #fce3ee;
   --blanco: #ffffff;
   --azul-claro: #c2e7f2;
+  --rosado-fuerte: #ff80ab;
 }
 
 header {
@@ -74,23 +77,85 @@ nav ul li a:hover {
   color: var(--morado);
 }
 
-.cart-button-wrapper {
-  position: relative;
-  display: inline-block;
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
 }
 
-.cart-badge {
-  position: absolute;
-  top: -6px;
-  right: -10px;
-  background: red;
-  color: white;
-  border-radius: 50%;
-  padding: 1px 5px;
-  font-size: 10px;
-  font-weight: bold;
-  min-width: 18px;
+.hero-box, .section-box {
+  background: linear-gradient(270deg,
+    #fff3b0,
+    #fceff9,
+    #b38fd4,
+    #a5d8ff,
+    #fceff9,
+    #fff3b0
+  );
+  background-size: 600% 600%;
+  animation: flowGradient 60s ease infinite;
+  padding: 2.5rem;
+  border-radius: 25px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
   text-align: center;
+}
+
+.hero-box h1, .section-box h2 {
+  font-size: 2.5rem;
+  color: var(--rosado-fuerte);
+  margin-bottom: 1.5rem;
+}
+
+.hero-box p, .section-box p {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.banner-img {
+  width: 100%;
+  border-radius: 25px;
+  margin: 40px 0;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+.bebe-img {
+  width: 100%;
+  border-radius: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  margin: 40px 0;
+}
+
+.benefits-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  background: linear-gradient(to right, #ffe6f0, #e6f0ff);
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.benefit-item {
+  text-align: center;
+}
+
+.benefit-item img {
+  width: 80px;
+  margin-bottom: 15px;
+}
+
+.benefit-item h3 {
+  font-size: 1.3rem;
+  color: var(--rosado-fuerte);
+  margin-bottom: 0.5rem;
+}
+
+.benefit-item p {
+  font-size: 1rem;
+  color: #333;
 }
 
 .social-floating-bar {
@@ -103,8 +168,8 @@ nav ul li a:hover {
 }
 
 .social-button img {
-  width: 34px;
-  height: 34px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease;
@@ -114,7 +179,6 @@ nav ul li a:hover {
 .social-button img:hover {
   transform: scale(1.15);
 }
-
 
 .chat-bubble-help {
   position: fixed;
@@ -132,49 +196,11 @@ nav ul li a:hover {
   animation: floatFade 1s ease forwards;
 }
 
-.hero-box, .section-box {
-  background: linear-gradient(270deg,
-    #fff3b0,
-    #fceff9,
-    #b38fd4,
-    #a5d8ff,
-    #fceff9,
-    #fff3b0
-  );
-  background-size: 600% 600%;
-  animation: flowGradient 60s ease infinite;
-  padding: 2.5rem;
-  border-radius: 25px;
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
-  max-width: 850px;
-  margin: 50px auto;
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
+@keyframes flowGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
-
-.hero-box h1, .section-box h2 {
-  font-size: 2.3rem;
-  color: #ff80ab;
-  margin-bottom: 1.5rem;
-}
-
-.hero-box p, .section-box p {
-  font-size: 1.2rem;
-  color: #333;
-  line-height: 1.8;
-}
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #dff6fd;
-  background-image: url('assets/bg-patrones.jpg'); /* Asegurate que el nombre esté correcto y subido */
-  background-repeat: repeat;
-  background-size: auto;
-  color: #333;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-}
-
 
 @keyframes floatFade {
   from {
@@ -185,10 +211,4 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-@keyframes flowGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
