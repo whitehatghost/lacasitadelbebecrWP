@@ -12,7 +12,7 @@ Text Domain: lacasitadelbebe
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-image: url('assets/background.jpg');
+  background-image: url('https://raw.githubusercontent.com/whitehatghost/lacasitadelbebe/main/assets/background.jpg');
   background-size: repeat;
   background-color: #fff;
   color: #333;
