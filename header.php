@@ -20,7 +20,7 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      border-bottom: 0;
     }
 
     @keyframes flowGradient {
