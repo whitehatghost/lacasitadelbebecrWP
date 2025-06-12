@@ -80,9 +80,11 @@
       text-align: center;
     }
 
-    /* Quitar doble línea en contacto */
-    body.page-id-<?php echo get_queried_object_id(); ?> {
-      border-top: none !important;
+    /* Eliminar cualquier borde residual global */
+    body, html {
+      border: none !important;
+      margin: 0;
+      padding: 0;
     }
   </style>
 </head>
