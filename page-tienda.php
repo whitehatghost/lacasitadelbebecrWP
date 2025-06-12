@@ -1,25 +1,22 @@
 <?php
 /**
- * Template Name: Tienda Personalizada
+ * Template Name: Tienda Estática + WooCommerce
  */
 get_header();
-?>
 
-<main class="site-main">
-  <?php
-    // Incluir el HTML personalizado de /assets/tienda.html
-    $custom_html_path = get_template_directory() . '/assets/tienda.html';
-    if (file_exists($custom_html_path)) {
-      include($custom_html_path);
-    }
-  ?>
+// Cargar el archivo HTML externo
+$html_path = get_template_directory() . '/tienda.html';
+if (file_exists($html_path)) {
+    echo file_get_contents($html_path);
+} else {
+    echo '<div style="padding: 2rem; text-align: center; font-size: 1.2rem; color: red;">No se encontró el archivo tienda.html en la raíz del tema.</div>';
+}
 
-  <section class="woocommerce-products">
-    <?php
-      // Mostrar productos de WooCommerce
-      echo do_shortcode('[products limit="12" columns="4" paginate="true"]');
-    ?>
-  </section>
-</main>
+// Mostrar los productos de WooCommerce si está activo
+if (class_exists('WooCommerce')) {
+    echo '<section class="woocommerce-products" style="padding: 2rem; max-width: 1200px; margin: auto;">';
+    echo do_shortcode('[products limit="12" columns="4" paginate="true"]');
+    echo '</section>';
+}
 
-<?php get_footer(); ?>
+get_footer();
