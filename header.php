@@ -9,8 +9,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php wp_title('|', true, 'right'); ?><?php bloginfo('name'); ?></title>
   <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/assets/logo.jpg" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <?php wp_head(); ?>
   <style>
+    body, html, .woocommerce-page {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif !important;
+      background-color: #fff !important;
+      background-image: url('<?php echo get_template_directory_uri(); ?>/assets/background.jpg') !important;
+      background-repeat: repeat !important;
+      background-size: auto !important;
+    }
+
     header.site-header {
       background: linear-gradient(270deg, #d6b4f3, #eacdfc, #d6b4f3);
       background-size: 600% 600%;
@@ -37,12 +48,14 @@
     }
 
     .logo {
-      height: 60px;
+      height: 40px !important;
+      max-height: 40px !important;
+      width: auto;
       border-radius: 50%;
     }
 
     .nombre-tienda {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: bold;
       color: #a84cd7;
     }
@@ -57,8 +70,14 @@
 
     nav ul li a {
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 1rem;
       color: #333;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #a84cd7;
     }
 
     .cart-button-wrapper {
@@ -78,13 +97,6 @@
       font-weight: bold;
       min-width: 18px;
       text-align: center;
-    }
-
-    /* Eliminar cualquier borde residual global */
-    body, html {
-      border: none !important;
-      margin: 0;
-      padding: 0;
     }
   </style>
 </head>
