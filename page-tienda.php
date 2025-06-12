@@ -1,23 +1,118 @@
 <?php
 /**
- * Template Name: Tienda Estática + Productos
+ * Header principal del tema
  */
+?><!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+  <meta charset="<?php bloginfo( 'charset' ); ?>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><?php wp_title('|', true, 'right'); ?><?php bloginfo('name'); ?></title>
+  <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/assets/logo.jpg" type="image/x-icon">
+  <?php wp_head(); ?>
+  <style>
+    header.site-header {
+      background: linear-gradient(270deg, #d6b4f3, #eacdfc, #d6b4f3);
+      background-size: 600% 600%;
+      animation: flowGradient 60s ease infinite;
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      border-bottom: none;
+      box-shadow: none;
+    }
 
-get_header();
+    @keyframes flowGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-// Carga el HTML externo de la tienda personalizado (debe estar en la raíz del tema)
-$html_path = get_template_directory() . '/tienda.html';
-if (file_exists($html_path)) {
-    echo file_get_contents($html_path);
-} else {
-    echo '<div style="padding: 2rem; text-align: center; font-size: 1.2rem; color: red;">No se encontró el archivo tienda.html en la raíz del tema.</div>';
-}
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
 
-// Mostrar productos de WooCommerce (loop de la tienda)
-if ( function_exists('woocommerce_content') ) {
-    echo '<div class="woocommerce-products" style="padding: 3rem; max-width: 1200px; margin: auto">';
-    woocommerce_content();
-    echo '</div>';
-}
+    .logo {
+      height: 60px !important;
+      max-height: 60px !important;
+      width: auto;
+      border-radius: 50%;
+    }
 
-get_footer();
+    .nombre-tienda {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #a84cd7;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .cart-button-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 1px 5px;
+      font-size: 10px;
+      font-weight: bold;
+      min-width: 18px;
+      text-align: center;
+    }
+
+    body, html, .woocommerce-page {
+      border: none !important;
+      margin: 0;
+      padding: 0;
+      background-color: #fff !important;
+      background-image: url('<?php echo get_template_directory_uri(); ?>/assets/background.jpg') !important;
+      background-repeat: repeat !important;
+      background-size: auto !important;
+    }
+  </style>
+</head>
+<body <?php body_class(); ?>>
+  <header class="site-header">
+    <div class="logo-container">
+      <img src="<?php echo get_template_directory_uri(); ?>/assets/logo.jpg" alt="Logo" class="logo" />
+      <span class="nombre-tienda">La Casita del Bebé</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Inicio</a></li>
+        <li><a href="<?php echo esc_url( home_url( '/tienda' ) ); ?>">Tienda</a></li>
+        <li><a href="<?php echo esc_url( home_url( '/quienes-somos' ) ); ?>">Quiénes Somos</a></li>
+        <li><a href="<?php echo esc_url( home_url( '/contacto' ) ); ?>">Contacto</a></li>
+        <li>
+          <div class="cart-button-wrapper">
+            <a href="<?php echo wc_get_cart_url(); ?>">🛒</a>
+            <span class="cart-badge">
+              <?php echo WC()->cart->get_cart_contents_count(); ?>
+            </span>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
