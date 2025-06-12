@@ -20,7 +20,8 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      border-bottom: 0;
+      border-bottom: none;
+      box-shadow: none;
     }
 
     @keyframes flowGradient {
@@ -77,6 +78,11 @@
       font-weight: bold;
       min-width: 18px;
       text-align: center;
+    }
+
+    /* Quitar doble línea en contacto */
+    body.page-id-<?php echo get_queried_object_id(); ?> {
+      border-top: none !important;
     }
   </style>
 </head>
