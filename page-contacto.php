@@ -2,14 +2,14 @@
 /**
  * Template Name: Contacto Estático
  */
-
 get_header();
 
-$contacto_file = get_template_directory() . '/assets/contacto.html';
-if (file_exists($contacto_file)) {
-    echo file_get_contents($contacto_file);
+// Cargar HTML desde la raíz del tema (no dentro de /assets):
+$html_path = get_template_directory() . '/contacto.html';
+if (file_exists($html_path)) {
+    echo file_get_contents($html_path);
 } else {
-    echo '<p style="text-align:center;color:red;margin-top:40px;">El archivo contacto.html no se encuentra en /assets</p>';
+    echo '<div style="padding: 2rem; text-align: center; font-size: 1.2rem; color: red;">No se encontró el archivo contacto.html en la raíz del tema.</div>';
 }
 
 get_footer();
