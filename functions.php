@@ -25,3 +25,16 @@ function casita_register_menus() {
   ));
 }
 add_action('init', 'casita_register_menus');
+
+// Actualizar contador del carrito con AJAX
+add_filter('woocommerce_add_to_cart_fragments', 'actualizar_contenido_carrito_ajax');
+function actualizar_contenido_carrito_ajax($fragments) {
+    ob_start();
+    ?>
+    <span class="cart-badge">
+        <?php echo WC()->cart->get_cart_contents_count(); ?>
+    </span>
+    <?php
+    $fragments['span.cart-badge'] = ob_get_clean();
+    return $fragments;
+}
