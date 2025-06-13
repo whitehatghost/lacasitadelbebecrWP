@@ -19,5 +19,26 @@
   </div>
 
   <?php wp_footer(); ?>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Detectar si estamos en la página de tienda WooCommerce
+  if ( document.body.classList.contains('post-type-archive-product') ||
+       document.body.classList.contains('woocommerce-shop') ||
+       document.body.classList.contains('tax-product_cat') ||
+       document.body.classList.contains('archive') ) {
+    // Esperar 300ms para asegurarse de que la burbuja ya esté inyectada
+    setTimeout(function() {
+      const bubble = document.querySelector('.wh-widget-send-button-wrapper, .wh-fixed-bottom-right');
+      if (bubble) {
+        bubble.remove();
+        console.log('Burbuja de ayuda removida en tienda');
+      }
+    }, 300);
+  }
+});
+</script>
+
+
 </body>
 </html>
